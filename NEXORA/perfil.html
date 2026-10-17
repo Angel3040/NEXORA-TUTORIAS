@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil del Profesor - NEXORA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body class="app-dashboard-wrapper">
+
+  <div class="dashboard-card">
+    
+    <!-- SIDEBAR / BARRA LATERAL IZQUIERDA OSCURA -->
+    <aside class="sidebar-dark">
+      <a href="index.html" class="logo-badge" style="text-decoration:none;">N</a>
+      <i class="fas fa-th-large sidebar-icon" onclick="window.location.href='index.html'" title="Inicio / Catálogo"></i>
+      <i class="fas fa-calendar-alt sidebar-icon" onclick="window.location.href='panel.html'" title="Mis Clases"></i>
+      <i class="fas fa-comment-dots sidebar-icon" title="Mensajes"></i>
+      <i class="fas fa-cog sidebar-icon" style="margin-top:auto;" title="Ajustes"></i>
+    </aside>
+
+    <!-- SECCIÓN CENTRAL: DETALLES DEL PROFESOR Y HORARIOS -->
+    <main class="profile-main-content" id="profileMain">
+      <!-- Se llena dinámicamente con js/perfil.js -->
+    </main>
+
+    <!-- COLUMNA DERECHA: ACCIÓN DE RESERVA, PRECIO Y REVIEWS -->
+    <aside class="right-action-sidebar" id="profileRightSidebar">
+      <!-- Se llena dinámicamente con js/perfil.js -->
+    </aside>
+
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/perfil.js"></script>
+</body>
+</html>
