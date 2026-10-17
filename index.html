@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXORA - Encuentra tu Profesor Ideal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+  <!-- BANNER AMARILLO SUPERIOR -->
+  <div class="top-alert-bar">
+    ¿Eres profesor en Tuxtla Gutiérrez? <a href="#" id="openTeacherSignup" style="color:#000; font-weight:800;">Únete a nuestra red de asesores</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="logo-container">
+      <span class="logo-badge">N</span> NEXORA
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="#profesores">Profesores</a></li>
+      <li><a href="panel.html" id="myBookingsBtn">Mis Clases</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span id="userInfo" style="font-weight:700; font-size:14px; display:none;"></span>
+      <button class="btn btn-primary" id="openAuthBtn">Acceder / Registro</button>
+      <button class="btn btn-outline" id="logoutBtn" style="display:none; padding:8px 16px; font-size:12px;">Salir</button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION CON MOSAICO DE FOTOS -->
+  <section class="hero-saas">
+    <div>
+      <span style="color:var(--naranja-accent); font-weight:800; font-size:12px; letter-spacing:1px;">100% GARANTÍA DE SATISFACCIÓN</span>
+      <h1 class="hero-title">Encuentra a tu <br>Profesor Ideal</h1>
+      <p class="hero-subtitle">Te ayudamos a encontrar profesores particulares 1-a-1 en Tuxtla Gutiérrez y clases en línea por Google Meet.</p>
+      
+      <!-- BARRA DE FILTROS (MATERIAS Y MODALIDADES) -->
+      <div class="search-bar-advanced">
+        <select id="subjectSelect" class="filter-input">
+          <option value="">Todas las materias</option>
+          <optgroup label="Educación">
+            <option value="Preescolar">Preescolar</option>
+            <option value="Primaria">Primaria</option>
+            <option value="Secundaria">Secundaria</option>
+            <option value="Bachillerato">Bachillerato</option>
+          </optgroup>
+          <optgroup label="Tecnología">
+            <option value="Programación">Programación</option>
+            <option value="Sistemas">Sistemas</option>
+            <option value="Redes">Redes</option>
+            <option value="Bases de datos">Bases de datos</option>
+          </optgroup>
+          <optgroup label="Ingeniería">
+            <option value="Civil">Civil</option>
+            <option value="Eléctrica">Eléctrica</option>
+            <option value="Industrial">Industrial</option>
+            <option value="Energías renovables">Energías renovables</option>
+          </optgroup>
+          <optgroup label="Arquitectura y construcción">
+            <option value="Diseño">Diseño</option>
+            <option value="Planos">Planos</option>
+            <option value="Construcción">Construcción</option>
+            <option value="Carpintería">Carpintería</option>
+          </optgroup>
+          <optgroup label="Salud">
+            <option value="Enfermería">Enfermería</option>
+            <option value="Veterinaria">Veterinaria</option>
+            <option value="Farmacia">Farmacia</option>
+            <option value="Primeros auxilios">Primeros auxilios</option>
+          </optgroup>
+          <optgroup label="Ciencias">
+            <option value="Física">Física</option>
+            <option value="Química">Química</option>
+            <option value="Matemáticas">Matemáticas</option>
+            <option value="Biología">Biología</option>
+          </optgroup>
+          <optgroup label="Idiomas">
+            <option value="Inglés">Inglés</option>
+            <option value="Francés">Francés</option>
+            <option value="Alemán">Alemán</option>
+          </optgroup>
+          <optgroup label="Gastronomía">
+            <option value="Cocina">Cocina</option>
+            <option value="Repostería">Repostería</option>
+            <option value="Panadería">Panadería</option>
+          </optgroup>
+          <optgroup label="Derecho y administración">
+            <option value="Derecho">Derecho</option>
+            <option value="Contabilidad">Contabilidad</option>
+            <option value="Administración">Administración</option>
+            <option value="Negocios">Negocios</option>
+          </optgroup>
+        </select>
+
+        <select id="modalitySelect" class="filter-input">
+          <option value="">Todas las modalidades</option>
+          <option value="Online">En línea (Google Meet)</option>
+          <option value="Presencial">Presencial</option>
+          <option value="Ambos">Ambos</option>
+        </select>
+      </div>
+
+      <div style="display:flex; gap:12px; margin-top:20px;">
+        <a href="#profesores" class="btn btn-orange" id="heroStartBtn">Ver Profesores</a>
+        <button class="btn" style="background:#F1F5F9; color:#000;"><i class="fas fa-play"></i> Ver Cómo Funciona</button>
+      </div>
+    </div>
+
+    <!-- MOSAICO EN CUADRÍCULA DE TARJETAS COLORIDAS -->
+    <div class="hero-mosaic">
+      <div class="mosaic-card mosaic-1"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Profesor"></div>
+      <div class="mosaic-card mosaic-2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Profesor"></div>
+      <div class="mosaic-card mosaic-3"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Profesor"></div>
+      <div class="mosaic-card mosaic-4"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80" alt="Profesor"></div>
+    </div>
+  </section>
+
+  <!-- BANNER AZUL DE ESTADÍSTICAS -->
+  <section class="stats-banner">
+    <div class="stats-grid">
+      <div><div class="stat-val">870+</div><div class="stat-lbl">Profesores Expertos</div></div>
+      <div><div class="stat-val">20,000+</div><div class="stat-lbl">Horas Impartidas</div></div>
+      <div><div class="stat-val">295</div><div class="stat-lbl">Materias y Cursos</div></div>
+      <div><div class="stat-val">72,920</div><div class="stat-lbl">Alumnos Activos</div></div>
+    </div>
+  </section>
+
+  <!-- LISTADO DE PROFESORES -->
+  <section class="teachers-section" id="profesores">
+    <h2>Profesores Destacados en Tuxtla Gutiérrez</h2>
+    <div class="teachers-grid" id="teachersGrid" style="margin-top:20px;">
+      <!-- Se carga dinámicamente desde JS -->
+    </div>
+  </section>
+
+  <!-- MODAL DE AUTENTICACIÓN Y REGISTRO COMPLETO -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-content auth-card-app" style="max-width: 420px; max-height: 90vh; overflow-y: auto;">
+      <button class="close-btn" id="closeAuthBtn">&times;</button>
+
+      <!-- PASO 1: ELEGIR ROL -->
+      <div id="authStepChoose" class="auth-step active">
+        <h3 class="auth-title">Elige tu rol</h3>
+        <div class="role-cards-stack">
+          <div class="role-square-card" id="selectStudentRole">
+            <div class="role-avatar-circle bg-yellow">
+              <span class="role-emoji">🎓</span>
+            </div>
+            <strong>Estudiante</strong>
+          </div>
+
+          <div class="role-square-card" id="selectTeacherRole">
+            <div class="role-avatar-circle bg-green">
+              <span class="role-emoji">👨‍🏫</span>
+            </div>
+            <strong>Profesor</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 2: FORMULARIO DINÁMICO (LOGIN Y REGISTRO) -->
+      <div id="authStepForm" class="auth-step" style="display:none;">
+        <div class="auth-header-avatar">
+          <div class="role-avatar-circle bg-yellow" id="formAvatarCircle">
+            <span class="role-emoji" id="formAvatarEmoji">🎓</span>
+          </div>
+        </div>
+
+        <h3 class="auth-title" id="formAuthTitle">Iniciar Sesión</h3>
+
+        <form id="authForm" class="app-line-form">
+          <!-- Campo Nombre (Solo visible en Registro) -->
+          <div class="input-line-group signup-only" style="display:none;">
+            <input type="text" id="authName" placeholder="Nombre Completo">
+          </div>
+
+          <div class="input-line-group">
+            <input type="email" id="authEmail" placeholder="Correo electrónico" required>
+          </div>
+
+          <div class="input-line-group">
+            <input type="password" id="authPassword" placeholder="Contraseña" required>
+          </div>
+
+          <!-- CAMPOS EXCLUSIVOS PARA PROFESOR (SOLO EN REGISTRO) -->
+          <div id="teacherFields" class="teacher-only signup-only" style="display:none; flex-direction:column; gap:12px; text-align:left; margin-top:10px;">
+            <label style="font-size:12px; font-weight:700; color:var(--texto-mutado);">Materia o Área que impartes</label>
+            <select id="authSubject" class="filter-input" style="width:100%;">
+              <optgroup label="Educación">
+                <option value="Preescolar">Preescolar</option>
+                <option value="Primaria">Primaria</option>
+                <option value="Secundaria">Secundaria</option>
+                <option value="Bachillerato">Bachillerato</option>
+              </optgroup>
+              <optgroup label="Tecnología">
+                <option value="Programación">Programación</option>
+                <option value="Sistemas">Sistemas</option>
+                <option value="Redes">Redes</option>
+                <option value="Bases de datos">Bases de datos</option>
+              </optgroup>
+              <optgroup label="Ingeniería">
+                <option value="Civil">Civil</option>
+                <option value="Eléctrica">Eléctrica</option>
+                <option value="Industrial">Industrial</option>
+                <option value="Energías renovables">Energías renovables</option>
+              </optgroup>
+              <optgroup label="Arquitectura y construcción">
+                <option value="Diseño">Diseño</option>
+                <option value="Planos">Planos</option>
+                <option value="Construcción">Construcción</option>
+                <option value="Carpintería">Carpintería</option>
+              </optgroup>
+              <optgroup label="Salud">
+                <option value="Enfermería">Enfermería</option>
+                <option value="Veterinaria">Veterinaria</option>
+                <option value="Farmacia">Farmacia</option>
+                <option value="Primeros auxilios">Primeros auxilios</option>
+              </optgroup>
+              <optgroup label="Ciencias">
+                <option value="Física">Física</option>
+                <option value="Química">Química</option>
+                <option value="Matemáticas">Matemáticas</option>
+                <option value="Biología">Biología</option>
+              </optgroup>
+              <optgroup label="Idiomas">
+                <option value="Inglés">Inglés</option>
+                <option value="Francés">Francés</option>
+                <option value="Alemán">Alemán</option>
+              </optgroup>
+              <optgroup label="Gastronomía">
+                <option value="Cocina">Cocina</option>
+                <option value="Repostería">Repostería</option>
+                <option value="Panadería">Panadería</option>
+              </optgroup>
+              <optgroup label="Derecho y administración">
+                <option value="Derecho">Derecho</option>
+                <option value="Contabilidad">Contabilidad</option>
+                <option value="Administración">Administración</option>
+                <option value="Negocios">Negocios</option>
+              </optgroup>
+            </select>
+
+            <div style="display:flex; gap:10px;">
+              <div style="flex:1;">
+                <label style="font-size:12px; font-weight:700; color:var(--texto-mutado);">Costo por clase ($ MXN)</label>
+                <input type="number" id="authPrice" placeholder="200" style="width:100%; border-bottom:1.5px solid #CBD5E1; padding:6px; outline:none;">
+              </div>
+              <div style="flex:1;">
+                <label style="font-size:12px; font-weight:700; color:var(--texto-mutado);">Duración</label>
+                <select id="authDuration" class="filter-input" style="width:100%;">
+                  <option value="45 min">45 min</option>
+                  <option value="60 min" selected>60 min</option>
+                  <option value="90 min">90 min</option>
+                  <option value="120 min">120 min</option>
+                </select>
+              </div>
+            </div>
+
+           <label style="font-size:12px; font-weight:700; color:var(--texto-mutado);">Foto de perfil (Sube desde tu galería o dispositivo)</label>
+<input type="file" id="authPhotoFile" accept="image/*" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:8px; font-size:13px; outline:none; background:#FFFFFF; cursor:pointer;">
+
+            <label style="font-size:12px; font-weight:700; color:var(--texto-mutado);">Información sobre ti (Bio)</label>
+            <textarea id="authBio" rows="2" placeholder="Estudios, experiencia..." style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:6px; font-size:13px; outline:none;"></textarea>
+
+            <label style="font-size:12px; font-weight:700; color:var(--texto-mutado);">Sobre la clase (Metodología)</label>
+            <textarea id="authClassInfo" rows="2" placeholder="¿Cómo enseñas tus tutorías?" style="width:100%; border:1px solid #CBD5E1; border-radius:8px; padding:6px; font-size:13px; outline:none;"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-orange btn-pill-app" id="authSubmitBtn">Iniciar Sesión</button>
+        </form>
+
+        <div class="auth-footer-switch" style="margin-top:15px;">
+          <span id="authToggleText">¿No tienes cuenta?</span>
+          <button type="button" class="btn-link-orange" id="toggleAuthModeBtn">Regístrate aquí</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RUTA APUNTANDO A TU CARPETA STYLE/JS -->
+  <script src="style/js/data.js"></script>
+  <script src="style/js/app.js"></script>
+</body>
+</html>

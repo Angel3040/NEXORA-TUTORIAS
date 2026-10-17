@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Clases - NEXORA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body class="app-dashboard-wrapper">
+
+  <div class="dashboard-card">
+    
+    <!-- BARRA LATERAL OSCURA (SIDEBAR) -->
+    <aside class="sidebar-dark">
+      <a href="index.html" class="logo-badge" style="text-decoration:none;">N</a>
+      <i class="fas fa-th-large sidebar-icon" onclick="window.location.href='index.html'" title="Inicio / Catálogo"></i>
+      <i class="fas fa-calendar-alt sidebar-icon active" title="Mis Clases"></i>
+      <i class="fas fa-comment-dots sidebar-icon" title="Mensajes"></i>
+      <i class="fas fa-cog sidebar-icon" style="margin-top:auto;" title="Ajustes"></i>
+    </aside>
+
+    <!-- SECCIÓN PRINCIPAL: LISTA DE RESERVACIONES -->
+    <main class="profile-main-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:15px;">
+        <div>
+          <h2 style="font-size:28px; font-weight:800;" id="panelTitle">Panel de Mis Clases</h2>
+          <p style="color:var(--texto-mutado); font-size:14px; margin-top:4px;" id="panelSubtitle">Consulta tus horarios agendados e ingresa a tus reuniones de Google Meet.</p>
+        </div>
+        <a href="index.html#profesores" class="btn btn-orange" id="btnNewBooking"><i class="fas fa-plus"></i> Reservar Nueva Clase</a>
+      </div>
+
+      <!-- LISTA DINÁMICA DE CLASES -->
+      <div id="bookingsList" style="display:flex; flex-direction:column; gap:16px;">
+        <!-- Se renderiza desde style/js/panel.js -->
+      </div>
+    </main>
+
+    <!-- COLUMNA DERECHA: RESUMEN Y NOTIFICACIONES -->
+    <aside class="right-action-sidebar">
+      <h3 style="font-size:18px; font-weight:800; margin-bottom:15px;">Perfil Activo</h3>
+
+      <!-- Ficha de Usuario Activo -->
+      <div style="background:white; border-radius:16px; padding:16px; border:1px solid var(--border-light); margin-bottom:20px;">
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div style="width:48px; height:48px; border-radius:50%; background:#FEF3C7; display:flex; align-items:center; justify-content:center; font-size:20px;">
+            🎓
+          </div>
+          <div style="overflow:hidden;">
+            <strong id="panelUserName" style="display:block; font-size:15px; white-space:nowrap; text-overflow:ellipsis;">Cargando...</strong>
+            <span id="panelUserEmail" style="font-size:12px; color:var(--texto-mutado); display:block; white-space:nowrap; text-overflow:ellipsis;">correo@ejemplo.com</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notificación Google Meet -->
+      <div style="background:linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border-radius:16px; padding:18px; border:1px solid #BFDBFE;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; color:var(--azul-primary); font-weight:700; font-size:14px;">
+          <i class="fas fa-video"></i> Google Meet Integrado
+        </div>
+        <p style="font-size:12px; color:var(--texto-oscuro); line-height:1.5;">
+          Haz clic en <strong>Entrar a Google Meet</strong> a la hora agendada para unirte directamente a tu tutoría.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- MODAL PARA MODIFICAR DÍA, FECHA, HORA Y MODALIDAD DE LA CLASE -->
+  <div class="modal-overlay" id="editBookingModal">
+    <div class="modal-content auth-card-app">
+      <button class="close-btn" id="closeEditModalBtn">&times;</button>
+      <h3 class="auth-title">Modificar Clase</h3>
+
+      <form id="editBookingForm" class="app-line-form">
+        <input type="hidden" id="editBookingId">
+
+        <div class="input-line-group" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+          <label style="font-size: 12px; font-weight: 700; color: var(--texto-mutado);">Día de la semana</label>
+          <select id="editDay" class="filter-input" style="width: 100%;" required>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miércoles">Miércoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+            <option value="Sábado">Sábado</option>
+            <option value="Domingo">Domingo</option>
+          </select>
+        </div>
+
+        <div class="input-line-group" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+          <label style="font-size: 12px; font-weight: 700; color: var(--texto-mutado);">Fecha</label>
+          <input type="date" id="editDate" required style="width: 100%;">
+        </div>
+
+        <div class="input-line-group" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+          <label style="font-size: 12px; font-weight: 700; color: var(--texto-mutado);">Hora</label>
+          <select id="editTime" class="filter-input" style="width: 100%;" required>
+            <option value="08:00 AM">08:00 AM</option>
+            <option value="09:00 AM">09:00 AM</option>
+            <option value="10:00 AM">10:00 AM</option>
+            <option value="11:00 AM">11:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="04:00 PM">04:00 PM</option>
+            <option value="05:00 PM">05:00 PM</option>
+            <option value="06:00 PM">06:00 PM</option>
+          </select>
+        </div>
+
+        <div class="input-line-group" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+          <label style="font-size: 12px; font-weight: 700; color: var(--texto-mutado);">Modalidad</label>
+          <select id="editModality" class="filter-input" style="width: 100%;" required>
+            <option value="Online">Online (Google Meet)</option>
+            <option value="Presencial">Presencial</option>
+            <option value="Ambos">Ambos</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-orange btn-pill-app" style="margin-top: 15px;">Guardar Cambios</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- RUTAS APUNTANDO DIRECTO A TU ESTRUCTURA (style/js) -->
+  <script src="style/js/data.js"></script>
+  <script src="style/js/panel.js"></script>
+</body>
+</html>
